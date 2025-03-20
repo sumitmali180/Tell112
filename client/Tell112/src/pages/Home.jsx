@@ -18,10 +18,10 @@ const Home = () => {
         backgroundPosition: "center",
       }}
     >
-      <div  className="my-32">
+      <div  className="mt-40 mb-20">
       {/* Splash Text Animation */}
       <ScrollVelocity
-        texts={["WELCOME TO TELL 112", "REPORT CRIME NOW"]}
+        texts={["WELCOME TO TELL 112 |", "REPORT CRIME NOW |"]}
         velocity="100"
         className="custom-scroll-text text-white text-5xl font-bold mb-8  shadow-lg"
       /></div>

@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require('./routes/authRoutes');
+const crimeReportRoutes = require("./routes/crimeReportRoutes");
 
 dotenv.config();
 
@@ -17,11 +18,14 @@ connectDB();
 
 // Sample Route
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("API is running....");
 });
 
 // Routes
 app.use('/api/auth', authRoutes);
+
+// Routes
+app.use("/api/crime-reports", crimeReportRoutes);
 
 
 // Start the Server
