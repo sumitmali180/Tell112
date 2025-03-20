@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import img from '../assets/logo.png'
+import img from "../assets/logo.png";
 
 // Links constant for dynamic rendering
 const Links = [
@@ -19,11 +19,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-amber-400 shadow-lg z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full md:w-4/5 lg:w-2/3 bg-white/95 shadow-2xl rounded-3xl z-50 overflow-hidden">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" >
-          <img src={img} alt="Tell 112" className="h-12 w-23 cursor-pointer transform scale-105 transition-all duration-300 brightness-110  shadow-lg" />
+        <Link to="/" className="flex items-center">
+          <img
+            src={img}
+            alt="Tell 112"
+            className="h-12 w-auto cursor-pointer transform transition-all duration-300 hover:scale-105"
+          />
+          <span className="ml-2 text-xl font-bold text-gray-800">TELL 112</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -33,8 +38,8 @@ const Navbar = () => {
               key={index}
               to={link.path}
               className={({ isActive }) =>
-                `text-gray-700  transition duration-300 ${
-                  isActive ? "font-bold text-white" : ""
+                `text-gray-700 font-medium transition duration-300 ${
+                  isActive ? "text-amber-500 border-b-2 border-amber-500" : ""
                 }`
               }
             >
@@ -49,7 +54,7 @@ const Navbar = () => {
           className="md:hidden text-gray-700 focus:outline-none"
         >
           <svg
-            className="w-6 h-6"
+            className="w-6 h-6 transform transition-all duration-300 hover:scale-110"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -67,15 +72,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-white shadow-lg overflow-hidden transition-all duration-300 ${
-          isMobileMenuOpen ? "max-h-96" : "max-h-0"
+        className={`md:hidden bg-white shadow-lg overflow-hidden transition-all duration-500 ${
+          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         {Links.map((link, index) => (
           <NavLink
             key={index}
             to={link.path}
-            className="block px-4 py-2 text-gray-700 hover:bg-white transition duration-300"
+            className="block px-6 py-4 text-gray-700 font-medium hover:bg-gray-100 transition duration-300"
             onClick={toggleMobileMenu}
           >
             {link.name}

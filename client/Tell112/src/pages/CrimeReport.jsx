@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import yellow from "../assets/yellow.jpg";
 
 const CrimeReport = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top when the component mounts
+  }, []);
   const [formData, setFormData] = useState({
     reportDate: "",
     reportTime: "",
@@ -38,7 +42,7 @@ const CrimeReport = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center  p-4 mt-16"
+      className="min-h-screen pt-28 flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage: `url(${yellow})`,
         backgroundAttachment: "fixed",
@@ -46,7 +50,7 @@ const CrimeReport = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-5xl w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-500 backdrop-blur-sm bg-white/5 text-white">
+      <div className="max-w-5xl w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-500 backdrop-blur-sm bg-white/5 text-white mt-18">
         <h2 className="text-2xl font-bold text-center">
           Create Crime and Incident Report
         </h2>
