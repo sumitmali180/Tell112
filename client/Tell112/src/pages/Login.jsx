@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import yellow from "../assets/yellow.jpg"; // Import the same background image
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../features/auth/authApi";
+import yellow from "../assets/yellow.jpg";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,15 +32,22 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted:", formData);
-      // Add your login logic here (e.g., API call)
+      dispatch(loginUser(formData))
+        .unwrap()
+        .then((response) => {
+          console.log("Login successful:", response);
+          // Redirect or show success message
+        })
+        .catch((error) => {
+          console.error("Login failed:", error);
+        });
     }
   };
 
   return (
     <div
       className="min-h-screen pt-16 flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${yellow})` }} // Set the background image
+      style={{ backgroundImage: `url(${yellow})` }}
     >
       <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-500 backdrop-blur-sm bg-white/5">
         <div>
@@ -102,11 +113,15 @@ const Login = () => {
           <div>
             <button
               type="submit"
+              disabled={loading}
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-black bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 shadow-2xl"
             >
-              Log In
+              {loading ? "Logging In..." : "Log In"}
             </button>
           </div>
+          {error && (
+            <p className="text-red-500 text-sm text-center">{error.message}</p>
+          )}
         </form>
       </div>
     </div>
