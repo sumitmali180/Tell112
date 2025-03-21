@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import img from "../assets/logo.png";
 
@@ -12,14 +12,38 @@ const Links = [
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // State to track hover
 
   // Toggle mobile menu
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Handle scroll event
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full md:w-4/5 lg:w-2/3 bg-white/95 shadow-2xl rounded-3xl z-50 overflow-hidden">
+    <nav
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 ${
+        isHovered || !isScrolled
+          ? "w-full md:w-4/5 lg:w-2/3"
+          : "w-3/4 md:w-2/3 lg:w-1/2"
+      } bg-white/95 shadow-2xl rounded-3xl z-50 overflow-hidden transition-all duration-300`}
+      onMouseEnter={() => setIsHovered(true)} // Add hover effect
+      onMouseLeave={() => setIsHovered(false)} // Remove hover effect
+    >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
