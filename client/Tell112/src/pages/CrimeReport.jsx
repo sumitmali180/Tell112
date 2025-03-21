@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import yellow from "../assets/yellow.jpg";
+import { useCreateCrimeReportMutation } from "../api/crimeReportApi";
+import { useDispatch } from "react-redux";
+import { reset } from "../features/crimeReportSlice";
 
 const CrimeReport = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top when the component mounts
   }, []);
+
+  const dispatch = useDispatch();
+  const [createCrimeReport] = useCreateCrimeReportMutation();
+
   const [formData, setFormData] = useState({
     reportDate: "",
     reportTime: "",
@@ -35,9 +42,32 @@ const CrimeReport = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
+
+    // Create FormData object for file upload
+    const formDataToSend = new FormData();
+    Object.keys(formData).forEach((key) => {
+      if (key === "mediaFile" && formData[key]) {
+        formDataToSend.append(key, formData[key]);
+      } else {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
+
+    try {
+      const response = await createCrimeReport(formDataToSend).unwrap();
+      alert(response.message || "Report submitted successfully!");
+      dispatch(reset()); // Reset state
+      setFormData({ ...formData, mediaFile: null }); // Clear form
+    } catch (error) {
+      console.error("Error submitting report:", error);
+      if (typeof error.data === "string" && error.data.startsWith("<!DOCTYPE html>")) {
+        alert("Failed to submit report due to a server error.");
+      } else {
+        alert("Failed to submit report. Please try again.");
+      }
+    }
   };
 
   return (

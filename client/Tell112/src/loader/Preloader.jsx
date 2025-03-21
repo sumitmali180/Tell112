@@ -7,7 +7,7 @@ const Preloader = () => {
             100% { transform: translateX(0%); }
           }
           .animate-tape {
-            animation: tapeMove 10s linear infinite;
+            animation: tapeMove 4s linear infinite;
           }
         `}</style>
   
