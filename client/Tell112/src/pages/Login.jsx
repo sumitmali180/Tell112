@@ -100,13 +100,13 @@ const Login = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
+                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border-y-2 border-yellow-500 bg-transparent placeholder-white text-white focus:outline-none focus:border-yellow-600 ${
+                  errors.email ? "border-red-500" : "border-yellow-500"
                 } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 sm:text-sm transition-all duration-300`}
                 placeholder="Email Address"
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                <p className="text-red-700 text-sm mt-1">{errors.email}</p>
               )}
             </div>
 
@@ -121,13 +121,13 @@ const Login = () => {
                 type="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border ${
-                  errors.password ? "border-red-500" : "border-gray-300"
+                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border-y-2 border-yellow-500 bg-transparent placeholder-white text-white focus:outline-none focus:border-yellow-600 ${
+                  errors.password ? "border-red-500" : "border-yellow-500"
                 } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 sm:text-sm transition-all duration-300`}
                 placeholder="Password"
               />
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                <p className="text-red-700 text-sm mt-1">{errors.password}</p>
               )}
             </div>
           </div>

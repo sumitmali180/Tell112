@@ -87,8 +87,8 @@ const Signup = () => {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border ${
-                  errors.name ? "border-red-500" : "border-gray-300"
+                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border-y-2 border-yellow-500 bg-transparent placeholder-white text-white focus:outline-none focus:border-yellow-600 ${
+                  errors.name ? "border-red-500" : "border-yellow-500"
                 } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 sm:text-sm transition-all duration-300`}
                 placeholder="Full Name"
               />
@@ -108,8 +108,8 @@ const Signup = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
+                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border-y-2 border-yellow-500 bg-transparent placeholder-white text-white focus:outline-none focus:border-yellow-600 ${
+                  errors.email ? "border-red-500" : "border-yellow-500"
                 } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 sm:text-sm transition-all duration-300`}
                 placeholder="Email Address"
               />
@@ -129,8 +129,8 @@ const Signup = () => {
                 type="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border ${
-                  errors.password ? "border-red-500" : "border-gray-300"
+                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border-y-2 border-yellow-500 bg-transparent placeholder-white text-white focus:outline-none focus:border-yellow-600 ${
+                  errors.password ? "border-red-500" : "border-yellow-500"
                 } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 sm:text-sm transition-all duration-300`}
                 placeholder="Password"
               />
@@ -150,8 +150,8 @@ const Signup = () => {
                 type="password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border ${
-                  errors.confirmPassword ? "border-red-500" : "border-gray-300"
+                className={`appearance-none rounded-lg relative block w-full px-4 py-3 border-y-2 border-yellow-500 bg-transparent placeholder-white text-white focus:outline-none focus:border-yellow-600 ${
+                  errors.confirmPassword ? "border-red-500" : "border-yellow-500"
                 } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 sm:text-sm transition-all duration-300`}
                 placeholder="Confirm Password"
               />
@@ -170,7 +170,7 @@ const Signup = () => {
               disabled={loading}
               className="group relative w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-yellow-400 text-black font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
-              {loading ? <Preloader2/> : "Sign Up"}
+              {loading ? <Preloader2 /> : "Sign Up"}
             </button>
           </div>
           {error && (

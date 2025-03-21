@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.png"; 
+import Logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
               alt="TELL 112 Logo"
               className="w-32 h-auto mx-auto md:mx-0"
             />
-            <p className="mt-4 text-gray-400 text-sm">
+            <p className="mt-4 text-gray-400 text-sm mr-4">
               TELL 112 is committed to ensuring the safety of communities by
               providing a platform to report crimes and stay informed.
             </p>
@@ -25,25 +25,39 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="flex flex-col md:flex-row gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Quick Links
+              </h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <Link to="/" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/report" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/report"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     Report Crime
                   </Link>
                 </li>
                 <li>
-                  <Link to="/about" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/about"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/contact"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     Contact Us
                   </Link>
                 </li>
@@ -55,17 +69,26 @@ const Footer = () => {
               <h3 className="text-lg font-semibold text-white mb-4">Legal</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <Link to="/privacy-policy" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/privacy-policy"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms-of-service" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/terms-of-service"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link to="/faq" className="hover:text-amber-500 transition-colors">
+                  <Link
+                    to="/faq"
+                    className="hover:text-amber-500 transition-colors"
+                  >
                     FAQs
                   </Link>
                 </li>
@@ -74,7 +97,9 @@ const Footer = () => {
 
             {/* Contact Information */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Contact Us
+              </h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <span>Email:</span>{" "}
@@ -96,6 +121,15 @@ const Footer = () => {
                 </li>
                 <li>
                   <span>Address:</span> 123 Safety Lane, Secure City, SC 45678
+                </li>
+                <li>
+                  <span>🤖</span>
+                  <a
+                    href="https://github.com/sumitmali180/Tell112"
+                    target="_blank"
+                  >
+                    GitHub
+                  </a>
                 </li>
               </ul>
             </div>
@@ -159,8 +193,8 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} TELL 112. All rights reserved.
           </p>
           <p className="mt-2">
-            This website is designed to assist in crime reporting. For emergencies,
-            please call your local law enforcement.
+            This website is designed to assist in crime reporting. For
+            emergencies, please call your local law enforcement.
           </p>
         </div>
       </div>
