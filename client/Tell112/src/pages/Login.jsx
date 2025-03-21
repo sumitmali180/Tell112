@@ -1,28 +1,42 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authApi";
 import yellow from "../assets/yellow.jpg";
+import PoliceSirenLoader from "../loader/PoliceSirenLoader";
 
 const Login = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scrolls to the top when the component mounts
-  }, []);
+  const navigate = useNavigate(); // Initialize useNavigate
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
+
+  // State for form data and errors
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
   const [errors, setErrors] = useState({});
-  const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth);
 
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Check if token exists in localStorage on component mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/"); // Redirect to home page if token exists
+    }
+  }, [navigate]);
+
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Validate form fields
   const validateForm = () => {
     const newErrors = {};
 
@@ -33,6 +47,7 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -40,7 +55,9 @@ const Login = () => {
         .unwrap()
         .then((response) => {
           console.log("Login successful:", response);
-          // Redirect or show success message
+          // Save token to localStorage
+          localStorage.setItem("token", response.token); // Assuming the token is in response.token
+          navigate("/"); // Redirect to home page after successful login
         })
         .catch((error) => {
           console.error("Login failed:", error);
@@ -53,7 +70,7 @@ const Login = () => {
       className="min-h-screen pt-16 flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${yellow})` }}
     >
-      <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-500 backdrop-blur-sm bg-white/5">
+      <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-5000 backdrop-blur-sm bg-white/5 ease-in-out">
         <div>
           <h2 className="text-center text-3xl font-extrabold text-white">
             Welcome Back
@@ -118,9 +135,9 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-black bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 shadow-2xl"
+              className="group relative w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-yellow-400 text-black font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
-              {loading ? "Logging In..." : "Log In"}
+              {loading ? "Log In..." : "Log In"}
             </button>
           </div>
           {error && (

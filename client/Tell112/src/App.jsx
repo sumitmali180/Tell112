@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import "./App.css";
 import Footer from "./components/Footer";
 import Preloader from "./loader/Preloader";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,7 @@ function App() {
           <Route path="/report" element={<CrimeReport />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<UserProfile/>} />
         </Routes>
         <Footer />
       </Router>

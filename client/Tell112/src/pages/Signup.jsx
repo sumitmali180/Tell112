@@ -58,7 +58,7 @@ const Signup = () => {
       className="min-h-screen pt-16 flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${yellow})` }}
     >
-      <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-500 backdrop-blur-sm bg-white/5">
+      <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-5000 backdrop-blur-sm bg-white/5  ease-in-out">
         <div>
           <h2 className="text-center text-3xl font-extrabold text-white">
             Create Your Account
@@ -167,7 +167,7 @@ const Signup = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-black bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 shadow-2xl"
+              className="group relative w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-yellow-400 text-black font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
               {loading ? "Signing Up..." : "Sign Up"}
             </button>

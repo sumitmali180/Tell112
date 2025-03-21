@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import img from "../assets/logo.png";
-
-// Links constant for dynamic rendering
-const Links = [
-  { name: "Home", path: "/" },
-  { name: "Report", path: "/report" },
-  { name: "Login", path: "/login" },
-  { name: "Signup", path: "/signup" },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false); // State to track hover
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Access authentication state from Redux store
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   // Toggle mobile menu
   const toggleMobileMenu = () => {
@@ -34,6 +32,21 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Define dynamic links based on login status
+  const Links = token
+    ? [
+        { name: "Home", path: "/" },
+        { name: "Report", path: "/report" },
+        { name: "Profile", path: "/profile" },
+        { name: "Logout", path: "/", onClick: () => dispatch(logout()) }, // Add logout functionality
+      ]
+    : [
+        { name: "Home", path: "/" },
+        { name: "Report", path: "/report" },
+        { name: "Login", path: "/login" },
+        { name: "Signup", path: "/signup" },
+      ];
+
   return (
     <nav
       className={`fixed top-4 left-1/2 transform -translate-x-1/2 ${
@@ -41,8 +54,8 @@ const Navbar = () => {
           ? "w-full md:w-4/5 lg:w-2/3"
           : "w-3/4 md:w-2/3 lg:w-1/2"
       } bg-white/95 shadow-2xl rounded-3xl z-50 overflow-hidden transition-all duration-300`}
-      onMouseEnter={() => setIsHovered(true)} // Add hover effect
-      onMouseLeave={() => setIsHovered(false)} // Remove hover effect
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
@@ -66,6 +79,7 @@ const Navbar = () => {
                   isActive ? "text-amber-500 border-b-2 border-amber-500" : ""
                 }`
               }
+              onClick={link.onClick} // Handle logout click
             >
               {link.name}
             </NavLink>
@@ -105,7 +119,10 @@ const Navbar = () => {
             key={index}
             to={link.path}
             className="block px-6 py-4 text-gray-700 font-medium hover:bg-gray-100 transition duration-300"
-            onClick={toggleMobileMenu}
+            onClick={(e) => {
+              toggleMobileMenu();
+              link.onClick && link.onClick(e); // Handle logout click
+            }}
           >
             {link.name}
           </NavLink>
