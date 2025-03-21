@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authApi";
 import yellow from "../assets/yellow.jpg";
 import PoliceSirenLoader from "../loader/PoliceSirenLoader";
+import Preloader2 from "../loader/Preloader2";
 
 const Login = () => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -70,6 +71,7 @@ const Login = () => {
       className="min-h-screen pt-16 flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${yellow})` }}
     >
+      
       <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-inner transform transition-all duration-5000 backdrop-blur-sm bg-white/5 ease-in-out">
         <div>
           <h2 className="text-center text-3xl font-extrabold text-white">
@@ -137,7 +139,7 @@ const Login = () => {
               disabled={loading}
               className="group relative w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-yellow-400 text-black font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
-              {loading ? "Log In..." : "Log In"}
+              {loading ? <Preloader2 /> : "Log In"}
             </button>
           </div>
           {error && (

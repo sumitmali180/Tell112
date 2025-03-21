@@ -11,6 +11,8 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Preloader from "./loader/Preloader";
 import UserProfile from "./pages/UserProfile";
+import NotFound from "./components/NotFound";
+import Mascot from "./components/Mascot";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,9 +31,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<UserProfile/>} />
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
         <Footer />
       </Router>
+      <Mascot/>
     </>
   );
 }

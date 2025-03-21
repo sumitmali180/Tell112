@@ -1,6 +1,6 @@
 const Preloader = () => {
     return (
-      <div className="fixed inset-0 bg-black z-[9999] overflow-hidden">
+      <div className="fixed inset-0 bg-gray-900 z-[9999] overflow-hidden">
         <style jsx>{`
           @keyframes tapeMove {
             0% { transform: translateX(-50%); }
@@ -28,7 +28,7 @@ const Preloader = () => {
                   {[...Array(40)].map((_, i) => (
                     <span
                       key={i}
-                      className="text-black font-black text-xl uppercase pr-8"
+                      className="text-black font-black text-xl uppercase "
                     >
                       CRIME SCENE DO NOT CROSS
                     </span>

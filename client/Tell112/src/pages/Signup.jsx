@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "../features/auth/authApi";
 import yellow from "../assets/yellow.jpg";
+import Preloader2 from "../loader/Preloader2";
 
 const Signup = () => {
   useEffect(() => {
@@ -169,7 +170,7 @@ const Signup = () => {
               disabled={loading}
               className="group relative w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-yellow-400 text-black font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
-              {loading ? "Signing Up..." : "Sign Up"}
+              {loading ? <Preloader2/> : "Sign Up"}
             </button>
           </div>
           {error && (
