@@ -18,7 +18,7 @@ connectDB();
 
 // Sample Route
 app.get("/", (req, res) => {
-  res.send("API is running....");
+  res.redirect("https://tell112.vercel.app/");
 });
 
 // Routes
