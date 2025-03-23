@@ -36,6 +36,7 @@ const Navbar = () => {
   const Links = token
     ? [
         { name: "Home", path: "/" },
+        { name: "Cases", path: "/cases" },
         { name: "Report", path: "/report" },
         { name: "Profile", path: "/profile" },
         { name: "Logout", path: "/", onClick: () => dispatch(logout()) }, // Add logout functionality
