@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 //import {reportedCases} from "./cases";
 import yellow from "../assets/yellow.jpg";
+import Preloader2 from "../loader/Preloader2";
 
 
 // const reportedCases = [
@@ -146,7 +147,7 @@ const ReportedCases = () => {
         ))
       ) : (
         <p className="text-center text-gray-400 col-span-full">
-          No reported cases found.
+         <Preloader2/>
         </p>
       )}
     </div>
