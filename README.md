@@ -121,7 +121,7 @@ Tell 112
 
 
 ## Video Walkthrough of the Project 🎥
-https://youtu.be/p6vo4MC416o?si=2dI-hATAFJZ45ekv
+https://youtu.be/fbVFTO8j6Q0
 
 
 ## Features ⚙️
