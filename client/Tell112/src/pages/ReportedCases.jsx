@@ -1,5 +1,7 @@
 import React from "react";
-import {reportedCases} from "./cases";
+import { useState, useEffect } from "react";
+import axios from "axios";
+//import {reportedCases} from "./cases";
 import yellow from "../assets/yellow.jpg";
 
 
@@ -25,7 +27,24 @@ import yellow from "../assets/yellow.jpg";
 //   }
 // ];
 
-const ReportedCases = ({ cases = reportedCases }) => {
+const ReportedCases = () => {
+  const [reportedCases, setReportedCases] = useState([]);
+  useEffect(() => {
+    const fetchReportedCases = async () => {
+      try {
+        const response = await axios.get(
+          "https://tell112.onrender.com/api/crime-reports"
+        );
+        // Store the response data in the state
+        setReportedCases(response.data);
+      } catch (error) {
+        console.error("Error fetching reported cases:", error);
+      }
+    };
+
+    fetchReportedCases();
+  }, []); 
+  const cases=reportedCases;
   return (
     <div
   className="min-h-screen pt-28 pb-10 flex flex-col items-center justify-start bg-cover bg-center"

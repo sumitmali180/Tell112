@@ -1,87 +1,193 @@
-### **Project Title**: Crime Reporting and Tracking System
+# 🚔Tell 112
 
-### **Project Overview**:
+## Introduction 📍
+**Tell112** is a full-stack emergency response web application designed to streamline reporting and managing emergencies. It enables users to report incidents, track responders in real-time, and receive instant updates. The platform features role-based access for admins, responders, and users, along with geolocation tracking and real-time notifications. Built with a mobile-first approach, it ensures seamless usability during critical situations.
 
-The **Crime Reporting and Tracking System** allows citizens to report incidents, track local crime statistics, and access information about ongoing cases. This platform facilitates the collection of evidence and witness statements while providing transparency in the judicial process.
+## Project Type 👨‍💻
+Full-stack Web app
 
----
+## Deployed App 🌐
+[https://tell112.vercel.app/](https://tell112.vercel.app/)  
 
-### **Minimum Expected Features**:
 
-1. **User Registration and Authentication**:
+## Directory Structure 📂
+```
+Tell 112
+|   .gitignore
+|   README.md
+|   
++---.vscode
+|       settings.json
+|       
++---client
+|   \---Tell112
+|       |   .gitignore
+|       |   eslint.config.js
+|       |   index.html
+|       |   package-lock.json
+|       |   package.json
+|       |   postcss.config.js
+|       |   README.md
+|       |   tailwind.config.js
+|       |   vite.config.js
+|       |   
+|       +---public
+|       |   |   logo.png
+|       |   |   vite.svg
+|       |   |   
+|       |   \---logo
+|       |           logo.txt
+|       |           
+|       \---src
+|           |   App.css
+|           |   App.jsx
+|           |   index.css
+|           |   main.jsx
+|           |   
+|           +---api
+|           |       crimeReportApi.js
+|           |       
+|           +---app
+|           |       store.js
+|           |       
+|           +---assets
+|           |       logo.png
+|           |       police.webp
+|           |       police2.gif
+|           |       react.svg
+|           |       yellow.jpg
+|           |       yellow2.jpg
+|           |       yellowtape.jpg
+|           |       
+|           +---components
+|           |       Footer.jsx
+|           |       Mascot.jsx
+|           |       Navbar.jsx
+|           |       NotFound.jsx
+|           |       
+|           +---features
+|           |   |   crimeReportSlice.js
+|           |   |   
+|           |   \---auth
+|           |           authApi.js
+|           |           authSlice.js
+|           |           
+|           +---loader
+|           |       PoliceSirenLoader.jsx
+|           |       Preloader.jsx
+|           |       Preloader2.jsx
+|           |       
+|           +---pages
+|           |       cases.js
+|           |       CrimeReport.jsx
+|           |       CrimeReportingComponent.jsx
+|           |       Home.jsx
+|           |       Login.jsx
+|           |       ReportedCases.jsx
+|           |       Signup.jsx
+|           |       UserProfile.jsx
+|           |       
+|           \---reactbits
+|                   ASCIIText .jsx
+|                   ScrollVelocity.jsx
+|                   SplashCursor.jsx
+|                   
+\---server
+    |   package-lock.json
+    |   package.json
+    |   server.js
+    |   
+    +---config
+    |       db.js
+    |       
+    +---controllers
+    |       authController.js
+    |       crimeReportController.js
+    |       
+    +---middleware
+    |       authMiddleware.js
+    |       uploadMiddleware.js
+    |       
+    +---models
+    |       CrimeReport.js
+    |       User.js
+    |       
+    \---routes
+            authRoutes.js
+            crimeReportRoutes.js
 
-   - Users can create accounts and log in securely to submit crime reports.
+```
 
-2. **Incident Reporting**:
 
-   - Users can submit detailed reports of crimes, including incident type, date, time, and location.
-   - Provide options to **upload evidence** such as photos, videos, or documents.
 
-3. **Witness Submission**:
+## Video Walkthrough of the Project 🎥
+https://youtu.be/p6vo4MC416o?si=2dI-hATAFJZ45ekv
 
-   - Users can submit witness information and statements, including contact details.
 
-4. **Lawyer Comments and Hearing Records**:
+## Features ⚙️
+- User Authentication: Secure login and signup for admins, responders, and users.
+- Emergency Reporting: Users can quickly report emergencies with details and location.
+- Role-Based Access: Separate dashboards for admins, responders, and users.
+- Notifications: Instant alerts and updates for emergencies and response progress.
 
-   - Allow lawyers involved in cases to provide comments or insights.
-   - Record and display hearing proceedings related to the reported incidents.
 
-5. **Case Tracking Dashboard**:
-   - Users can view the status of their reported incidents and track case developments.
-   - Include sections for public and private sharing of case details.
 
----
+## Installation & Getting Started 💽
+Follow these steps to install and run the project locally.
 
-### **Unique Features**:
+```bash
+# Clone the repository
+https://github.com/sumitmali180/Tell112
+# Install dependencies
+cd Tell112
+npm install
 
-1. **Real-Time Crime Alerts:**
-   - Implement a feature that sends users real-time alerts about crimes reported in their vicinity or areas of interest. This could include notifications for specific crime types (e.g., theft, assault).
-2. **Public and Private Links for Case Sharing**:
+# Start frontend
+npm run dev
 
-   - Allow users to generate links for sharing case details publicly or privately with authorized individuals.
+# Install backend dependencies
+cd server
+npm install
 
-3. **Judicial Decision Repository**:
+# Start backend
+npm run dev
+```
 
-   - Store and display the judge's final verdict for each case, along with explanations and reasoning.
+## Credentials 🧔‍♂️
+Provide user credentials for authenticated pages.
 
-4. **Community Crime Statistics**:
+```bash
+Email: user@gmail.com
+Password: Password@123
+```
 
-   - Provide visualizations of local crime statistics, including maps, charts, and trends over time.
+## APIs Used 🧩
+-Created Backend server deployed on Render
+[https://tell112.onrender.com](https://tell112.onrender.com/)  
 
-5. **Anonymous Reporting Option**:
-   - Users can report crimes anonymously to encourage more submissions without fear of retaliation.
 
----
+## Technology Stack 🛠️
+- **Frontend:** React.js, Tailwind CSS, Redux
+- **Backend:** Node.js, Express, Mongoose
+- **Database:** Mongo DB
+- **Authentication:** JWT Auth
 
-### **Challenging Features**:
+## Web-App Preview 🎨
 
-1. **AI-Predicted Judgement System**:
+### **Home Page**
+![Home Page](https://i.ibb.co/qLcZQny2/Screenshot-2025-03-24-082901.png)
 
-   - Implement an AI model that predicts possible outcomes based on lawyers' comments, type of crime, and statements from witnesses.
-   - Provide insights on potential sentencing or rulings based on historical data.
+### **Login Page**
+![Login Page](https://i.ibb.co/whMf9kVx/Screenshot-2025-03-24-082943.png)
 
-2. **Case Complexity Analyzer**:
+### **Register Page**
+![Register Page](https://i.ibb.co/Q3zkRYXn/Screenshot-2025-03-24-082917.png)
 
-   - Analyze submitted cases to determine complexity levels and suggest required documentation or evidence.
+### **Cases Dashboard**
+![Admin Dashboard](https://i.ibb.co/6RZRX7Yv/Screenshot-2025-03-24-083021.png)
 
-3. **Responsive Design and Accessibility Features**:
+### **Report Crime and Incident Report**
+![Add Product Page](https://i.ibb.co/0VtKbFHj/Screenshot-2025-03-24-083007.png)
 
-   - Ensure the platform is accessible on various devices and compliant with accessibility standards to cater to all users.
-
-4. **Data Security and Encryption**:
-   - Implement strong security measures to protect user data, especially sensitive information related to crime reports.
-
----
-
-### **Additional Features**:
-
-1. **Notifications and Alerts**:
-
-   - Send notifications to users for any updates on their cases or changes in local crime statistics.
-
-2. **Resource Hub for Legal Assistance**:
-
-   - Provide resources and contact information for local legal aid organizations to assist victims of crime.
-
-3. **User Feedback and Improvement**:
-   - Include a feedback mechanism for users to suggest improvements or report issues with the system.
+### **Footer**
+![Footer](https://i.ibb.co/XGnZ2Lv/Screenshot-2025-03-24-083052.png)
